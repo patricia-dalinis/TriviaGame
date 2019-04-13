@@ -32,7 +32,7 @@ $(document).ready(function () {
     var wrongQuestions;
     var missedQuestions;
 
-    // Set up hide and onclick functions, hide the choice buttons and start again button, onclick start game and answer choices. Outcomes should be logged and displayed at the end in the final results page. Once a choice is clicked, the result will display...
+    // Set up begining of game, hide the choice buttons and start again button, onclick start game and answer choices. Outcomes should be logged and displayed at the end in the final results page. Once a choice is clicked,the result will display... Game restarts upon onclick of Once More?
 
     $(".choices").hide();
     $("#startAgain").hide();
@@ -43,6 +43,8 @@ $(document).ready(function () {
         console.log(userChoice);
         results();
     });
+
+    $("#startAgain").click(beginGame);
 
     // Function Timer for Questions
     function myTimer() {
@@ -64,7 +66,7 @@ $(document).ready(function () {
 
         $("#startGame").hide();
         $("#results").hide();
-        $("#startOver").hide();
+        $("#startAgain").hide();
         displayQuestion();
     }
 
@@ -74,6 +76,7 @@ $(document).ready(function () {
         $("#gif").hide();
         $(".choices").show();
         $("#question").show();
+        $('#timeRemaining').show();
 
         intervalId = setInterval(myTimer, 1000);
 
@@ -94,29 +97,32 @@ $(document).ready(function () {
 
         clearInterval(intervalId);
 
-        $('#timeRemaining').html("Quickly, Potter! Only " + countDown + " seconds left!");
         $("#answer").html("The correct answer: " + quiz[index].correctAnswer);
-        $("#gif").html("<img src=" + quiz[index.gif + " />"]);
+        $("#gif").html("<img src=" + quiz[index].gif + " />");
 
         if (countDown === 0) {
+            $("#timeRemaining").hide();
             $("#answer").show();
             $("#result").html("Time's up, Potter!");
             missedQuestions++;
         } else if (quiz[index].options[userChoice][1] === "correct") {
-            $("#result").html("Well done, Potter!");
+            $("#timeRemaining").hide();
+            $("#result").html("Correct! Well done, Potter!");
             rightQuestions++;
         } else if (quiz[index].options[userChoice][1] === "incorrect") {
+            $("#timeRemaining").hide();
             $("#answer").show();
-            $("#result").html("Better luck next time, eh Potter?");
+            $("#result").html("Wrong! Better luck next time, eh Potter?");
             wrongQuestions++;
         }
 
-        nextQuestion = setTimeout(reset, 4000);
+        nextQuestion = setTimeout(reset, 4500);
     }
 
     // Reset for the next question, display the results page
     function reset() {
-        countTimer = 15;
+        console.log("Reset");
+        countDown = 15;
         if (index < (quiz.length - 1)) {
             index++;
             displayQuestion();
@@ -126,12 +132,12 @@ $(document).ready(function () {
             $("#question").hide();
             $("#results").show();
             $("#startAgain").show();
+            $("#timeRemaining").hide();
 
-            $('#timeRemaining').html("Quickly, Potter! Only " + countDown + " seconds left!");
-            $("#result").html("Until next year, Potter! Here are your marks.");
+            $("#result").html("Quills down! Here are your marks:");
             $("#right").html("Good Marks: " + rightQuestions);
             $("#wrong").html("Bad Marks: " + wrongQuestions);
-            $("#missed").html("Missed Marks: " + missedQuestions);
+            $("#missed").html("Missed the Mark: " + missedQuestions);
         }
     }
 })
