@@ -1,0 +1,50 @@
+body {
+    background-color: black;
+    background-image: url("https://images.unsplash.com/photo-1545164027-0d5617cef5fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1933&q=80");
+}
+
+/* Header Magic Div */
+
+.jumbotron {
+    background-color: black;
+}
+
+.jumbotron, h1 {
+    font-size: 65px;
+    color: silver;
+    font-family: 'Gabriela', serif;
+    background: transparent;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+h3.lead {
+    margin-top: 1rem;
+}
+
+/* Main Magic Div */
+
+.container {
+    background: black;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-style: solid;
+    border-color: silver;
+    border-width: 1px;
+}
+
+.col-md-12 {
+    text-align: center;
+    font-family: 'Della Respira', serif;
+    color: silver;
+    font-size:25px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#startGame, #startAgain {
+    background-color: silver;
+    color: black;
+    border-style: ridge;
+}
