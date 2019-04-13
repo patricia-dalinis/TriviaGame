@@ -1,5 +1,6 @@
 # TriviaGame
 JavaScript Assignment 2
+https://patricia-dalinis.github.io/TriviaGame/
 
 ### Overview
 
