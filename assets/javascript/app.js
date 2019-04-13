@@ -20,6 +20,86 @@ $(document).ready(function () {
         },
         correctAnswer: "Black",
         gif: "assets/images/narcissa.gif"
+    }, {
+        question: "How many names does Dumbledore have in his full name?",
+        options: {
+            option1: ["Two", "incorrect"],
+            option2: ["Three", "incorrect"],
+            option3: ["Four", "incorrect"],
+            option4: ["Five", "correct"],
+        },
+        correctAnswer: "Five",
+        gif: "assets/images/dumbledore2.gif"
+    }, {
+        question: "Who does Draco Malfoy take to the Yule Ball in Book Four?",
+        options: {
+            option1: ["Pansy Parkinson", "correct"],
+            option2: ["Hermione Granger", "incorrect"],
+            option3: ["Millicent Bullstrode", "incorrect"],
+            option4: ["Fleur Delacour", "incorrect"],
+        },
+        correctAnswer: "Pansy Parkinson",
+        gif: "assets/images/malfoy.gif"
+    }, {
+        question: "What is Rita Skeeter's Animagus form?",
+        options: {
+            option1: ["mouse", "incorrect"],
+            option2: ["fish", "incorrect"],
+            option3: ["frog", "incorrect"],
+            option4: ["beetle", "correct"],
+        },
+        correctAnswer: "beetle",
+        gif: "assets/images/rita.gif"
+    }, {
+        question: "Who knocks out the troll in the ladies' bathroom in Book One?",
+        options: {
+            option1: ["Harry", "incorrect"],
+            option2: ["Ron", "correct"],
+            option3: ["Professor Snape", "incorrect"],
+            option4: ["Professor Quirrell", "incorrect"],
+        },
+        correctAnswer: "Ron",
+        gif: "assets/images/ron.gif"
+    }, {
+        question: "Who knocks out the troll in the corridor that leads to the Sorcerer's Stone in Book One?",
+        options: {
+            option1: ["Harry", "incorrect"],
+            option2: ["Hermione", "incorrect"],
+            option3: ["Professor Snape", "incorrect"],
+            option4: ["Professor Quirrell", "correct"],
+        },
+        correctAnswer: "Professor Quirrell",
+        gif: "assets/images/quirrell.gif"
+    }, {
+        question: "Who was the student that was petrified by the Basilisk by looking through Nearly-Headless Nick in Book Two?",
+        options: {
+            option1: ["Ernie Macmillan", "incorrect"],
+            option2: ["Justin Finch-Fletchley", "correct"],
+            option3: ["Lee Jordan", "incorrect"],
+            option4: ["Seamus Finnigan", "incorrect"],
+        },
+        correctAnswer: "Justin Finch-Fletchley",
+        gif: "assets/images/nick.gif"
+    }, {
+        question: "Who placed the Imperius Curse on Katie Bell in Book Six?",
+        options: {
+            option1: ["Professor Snape", "incorrect"],
+            option2: ["Voldermort", "incorrect"],
+            option3: ["Draco Malfoy", "incorrect"],
+            option4: ["Madam Rosmerta", "correct"],
+        },
+        correctAnswer: "Madam Rosmerta",
+        gif: "assets/images/bell.gif"
+    }, {
+        question: "What is the name of the dog that Aunt Marge brings with her to Privet Drive in Book Three?",
+        options: {
+            option1: ["Ripper", "correct"],
+            option2: ["Buster", "incorrect"],
+            option3: ["Rover", "incorrect"],
+            option4: ["Bowser", "incorrect"],
+        },
+        correctAnswer: "Ripper",
+        gif: "assets/images/marge.gif"
     }];
 
     // Variables for Game
@@ -33,7 +113,6 @@ $(document).ready(function () {
     var missedQuestions;
 
     // Set up begining of game, hide the choice buttons and start again button, onclick start game and answer choices. Outcomes should be logged and displayed at the end in the final results page. Once a choice is clicked,the result will display... Game restarts upon onclick of Once More?
-
     $(".choices").hide();
     $("#startAgain").hide();
     $("#startGame").click(beginGame);
@@ -107,6 +186,7 @@ $(document).ready(function () {
             missedQuestions++;
         } else if (quiz[index].options[userChoice][1] === "correct") {
             $("#timeRemaining").hide();
+            $("#answer").show();
             $("#result").html("Correct! Well done, Potter!");
             rightQuestions++;
         } else if (quiz[index].options[userChoice][1] === "incorrect") {
